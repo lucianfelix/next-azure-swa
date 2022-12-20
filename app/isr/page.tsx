@@ -1,5 +1,4 @@
-
-import { ClientDateTime } from "./ClientDateTime";
+import {ClientDateTime} from "./ClientDateTime";
 
 export const dynamicParams = true;
 
@@ -7,7 +6,7 @@ async function fetchData(zone: string) {
 
     const res = await fetch(
         `http://worldtimeapi.org/api/timezone/Europe/${zone}`,
-        {next: {revalidate: 10}},
+        {next: {revalidate: 30}},
     );
     const data = await res.json();
     return data;
@@ -20,22 +19,20 @@ export default async function Page({
     children?: React.ReactNode;
 }) {
     const zone = params?.zone ? params?.zone : 'Zurich';
-    console.log(zone);
     const data = await fetchData(zone);
     return (
         <>
-            <div className="space-y-4">
-                <h1 className="text-2xl font-medium text-gray-200">Fetch</h1>
-                <p className="font-medium text-gray-500">Zone: {zone}</p>
-                <p className="font-medium text-gray-500">Datetime: {data.datetime}</p>
+            <div>
+                <h1>Fetch response time from http://worldtimeapi.org/api/timezone/Europe/{zone}</h1>
+                <h2>{new Date(data.datetime).toLocaleString()}</h2>
             </div>
 
-            <div className="space-y-4">
-                <h1 className="text-2xl font-medium text-gray-200">Server</h1>
-                <p className="font-medium text-gray-500">Datetime: {new Date().toLocaleString()}</p>
+            <div>
+                <h1>Server rendering time</h1>
+                <h2>{new Date().toLocaleString()}</h2>
             </div>
 
-          <ClientDateTime/>
+            <ClientDateTime/>
         </>
     )
 }

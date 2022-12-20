@@ -10,9 +10,9 @@ export function ClientDateTime() {
     });
 
     return (
-        <div className="space-y-4">
-            <h1 className="text-2xl font-medium text-gray-200">Client</h1>
-            <p className="font-medium text-gray-500">Datetime: {date}</p>
+        <div>
+            <h1>Client rendering time</h1>
+            <h2>{date}</h2>
         </div>
     );
 }
