@@ -4,9 +4,15 @@ export const dynamicParams = true;
 
 async function fetchData(zone: string) {
 
+    //sometime this fetch will error out, failing the whole rendering function
     const res = await fetch(
         `http://worldtimeapi.org/api/timezone/Europe/${zone}`,
-        {next: {revalidate: 30}},
+        {
+            next: {
+                //invalidate cache if more than X seconds have passed since the last fetch
+                revalidate: 20
+            }
+        },
     );
     const data = await res.json();
     return data;
@@ -23,12 +29,12 @@ export default async function Page({
     return (
         <>
             <div>
-                <h1>Fetch response time from http://worldtimeapi.org/api/timezone/Europe/{zone}</h1>
+                <p>Result of fetch call from server to <a href={"http://worldtimeapi.org/api/timezone/Europe/" + zone}>http://worldtimeapi.org/api/timezone/Europe/{zone}</a></p>
                 <h2>{new Date(data.datetime).toLocaleString()}</h2>
             </div>
 
             <div>
-                <h1>Server rendering time</h1>
+                <p>Last server rendering time</p>
                 <h2>{new Date().toLocaleString()}</h2>
             </div>
 

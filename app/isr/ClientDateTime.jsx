@@ -11,7 +11,7 @@ export function ClientDateTime() {
 
     return (
         <div>
-            <h1>Client rendering time</h1>
+            <p>Client rendering time</p>
             <h2>{date}</h2>
         </div>
     );
