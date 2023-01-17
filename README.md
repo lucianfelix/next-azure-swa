@@ -14,4 +14,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Deployments
 
-Deployed at [](https://victorious-sky-0d4244803.2.azurestaticapps.net/)
+Deployed at [https://victorious-sky-0d4244803.2.azurestaticapps.net/](https://victorious-sky-0d4244803.2.azurestaticapps.net/)
