@@ -2,7 +2,7 @@ export default async function Page() {
     return (
         <>
             <h3>
-                <a href="/isr">App SSR + fetch&revalidate every 20s</a><br/>
+                <a href="/isr">App ISR + fetch&revalidate every 20s</a><br/>
             </h3>
             <h3>
                 <a href="/live">App SSR + non cached backend fetch</a><br/>
@@ -12,4 +12,6 @@ export default async function Page() {
             </h3>
         </>
     );
+
+
 }
